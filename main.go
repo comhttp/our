@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/oknors/comhttpus/rts"
+	"github.com/comhttp/our/rts"
 	"log"
 	"net/http"
 	"time"

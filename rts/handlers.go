@@ -1,9 +1,9 @@
 package rts
 
 import (
+	"github.com/comhttp/our/utl"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/oknors/comhttpus/utl"
 	"net/http"
 	"text/template"
 )
