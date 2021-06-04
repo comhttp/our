@@ -1,0 +1,33 @@
+{{ template "head" }}
+    <style>
+        {{ template "style_css" }}
+    </style>
+    <title>ParallelCoin block explorer</title>
+</head>
+
+<body>
+<div id="explorer">
+    <layout>
+        <{{ .T }} slug="{{ .Item }}"></{{ .T }}>
+    </layout>
+</div>
+
+<script>
+    new Vue({
+        el: '#explorer',
+        data() {
+            return {
+                theme: {
+                    fontFamily: {}
+                },
+            }
+        },
+        components:{
+            layout: httpVueLoader('https://s.okno.rs//explorer/vue/layout.vue'),
+            {{ .T }}: httpVueLoader('https://s.okno.rs/explorer/vue/{{ .T }}.vue'),
+        },
+    });
+</script>
+</body>
+
+</html>

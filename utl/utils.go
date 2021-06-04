@@ -31,7 +31,7 @@ func (w *interceptResponseWriter) Write(p []byte) (n int, err error) {
 
 func DefaultErrorHandler(w http.ResponseWriter, status int) {
 	w.Header().Set("Content-Type", "text/html")
-	template.Must(template.ParseFiles("tpl/sys/error.gohtml", "tpl/sys/base.gohtml")).ExecuteTemplate(w, "base", map[string]interface{}{"status": status})
+	template.Must(template.ParseFiles("tpl/error.gohtml")).ExecuteTemplate(w, "error", map[string]interface{}{"status": status})
 }
 
 func InterceptHandler(next http.Handler, errH ErrorHandler) http.Handler {

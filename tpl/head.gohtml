@@ -2,23 +2,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <base href="/">
-<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+{{/*<link rel="manifest" href="manifest.json" crossorigin="use-credentials">*/}}
 <link rel="icon" type="image/png" href="static/favicon.png">
 <meta property="og:description" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
 <meta property="og:type" content="website">
 <meta property="og:image" content="static/icon.jpg">
 <meta name="twitter:image" content="static/icon.jpg">
 
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" />
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@tailwindcss/typography/dist/typography.min.css" />
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@tailwindcss/line-clamp/dist/line-clamp.min.css" />
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@tailwindcss/aspect-ratio/dist/aspect-ratio.min.css" />
-<link rel="stylesheet" type="text/css" href="https://rsms.me/inter/inter.css" />
+<link rel="stylesheet" type="text/css" href="https://comhttp.okno.rs/css/tailwind.min.css" />
+<link rel="stylesheet" type="text/css" href="https://comhttp.okno.rs/css/typography.min.css" />
+<link rel="stylesheet" type="text/css" href="https://comhttp.okno.rs/css/line-clamp.min.css" />
+<link rel="stylesheet" type="text/css" href="https://comhttp.okno.rs/css/aspect-ratio.min.css" />
+<link rel="stylesheet" type="text/css" href="https://comhttp.okno.rs/css/inter.css" />
 
 
 <title>{{ .Title }}</title>
 <meta property="og:title" content="XXXXXXXXXXXXXXXXXXXXx">
+<script src="https://comhttp.okno.rs/js/vue.min.js"></script>
+<script src="https://comhttp.okno.rs/js/httpVueLoader.js"></script>
+<script src="https://comhttp.okno.rs/js/axios.min.js"></script>
 
+<script src="https://comhttp.okno.rs/js/vuescroll.js"></script>
+<script src="https://comhttp.okno.rs/js/vuescroll-slide.js"></script>
+<script src="https://comhttp.okno.rs/js/vuescroll-native.js"></script>
 {{ template "style" .}}
-<link rel="stylesheet" type="text/css" href="https://t.okno.rs/comhttp/tld/{{ .TLD }}/style.css" />
+{{/*<link rel="stylesheet" type="text/css" href="https://comhttp.okno.rs/css/{{ .App }}/style.css" />*/}}
 {{end}}

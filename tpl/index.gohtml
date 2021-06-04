@@ -1,15 +1,5 @@
 {{define "index"}}
-<!DOCTYPE html>
-<head>
-{{ template "head" .}}
-<title>{{ .Title }}</title>
-</head>
-<body>
     <div id="comhttp">
-        <index section="{{ .Section }}" slug="{{ .Slug }}" page="{{ .Page }}"></index>
+        <index section="{{ .Section }}" slug="{{ .Slug }}" item="{{ .Item }}" class="w-screen min-h-screen flex"></index>
     </div>
-    {{ template "footer" .}}
-</body>
-{{ template "js" .}}
-</html>
 {{end}}

@@ -1,0 +1,16 @@
+{
+	"Port": "4488",
+	"Path": "",
+	"RPC": {
+		"Username": "parallelcoinrpc",
+		"Password": "GKzRg6irzu9AYqucHpsSUn942JGqQccu2nkbdReaV7Fu"
+	},
+	"CF": {
+		"CloudFlareAPI": "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records",
+		"CloudFlareEmail": "marcetin@gmail.com",
+		"CloudFlareAPIkey": "3e1d6b8ce0b0ffa990fc5a936d3b36b506a03"
+	},
+	"ApiKeys": {
+		"cryptocompare": "30054c457ea44e183bb614813c325675d53f4eef2151406b4745f8baaeeaa381"
+	}
+}

@@ -2,16 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OKNO Error</title>
+  <title>COM-HTTP Error</title>
   <style>
-
-    @import url(https://fonts.googleapis.com/css?family=Gilda+Display);
-
+      @font-face {
+          font-family: 'bariolregular';
+          src: url('https://font.okno.rs/bariol/bariol-regular-webfont.woff2') format('woff2'),
+          url('https://font.okno.rs/bariol/bariol-regular-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+      }
+      @font-face {
+          font-family: 'plan9regular';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src:
+                  local('plan9regular '),
+                  local('plan9regular'),
+                  url('https://font.okno.rs/plan9/plan9.woff2') format('woff2'),
+                  url('https://font.okno.rs/plan9/plan9.woff') format('woff');
+      }
     html {
       background-color:#303030;
       color: #cfcfcf;
       overflow: hidden;
       height: 100%;
+      font-family: 'bariolregular', sans-serif;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -21,8 +37,7 @@
 
     .error {
       text-align: center;
-      font-family: 'Gilda Display', serif;
-
+      font-family: 'plan9regular', serif;
       text-align: center;
       width: 100%;
       height: 120px;
@@ -120,67 +135,8 @@
       right: 0;
       opacity: 0;
       color: #cfcfcf;
-      -webkit-animation: noise-1 .2s linear infinite;
-      animation: noise-1 .2s linear infinite;
     }
-
-    @-webkit-keyframes noise-1 {
-      0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
-      10% {opacity: .1;}
-      50% {opacity: .5; left: -6px;}
-      80% {opacity: .3;}
-      100% {opacity: .6; left: 2px;}
-    }
-
-    @keyframes noise-1 {
-      0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
-      10% {opacity: .1;}
-      50% {opacity: .5; left: -6px;}
-      80% {opacity: .3;}
-      100% {opacity: .6; left: 2px;}
-    }
-
-    @-webkit-keyframes noise-2 {
-      0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
-      10% {opacity: .1;}
-      50% {opacity: .5; left: 6px;}
-      80% {opacity: .3;}
-      100% {opacity: .6; left: -2px;}
-    }
-
-    @keyframes noise-2 {
-      0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
-      10% {opacity: .1;}
-      50% {opacity: .5; left: 6px;}
-      80% {opacity: .3;}
-      100% {opacity: .6; left: -2px;}
-    }
-
-    @-webkit-keyframes noise {
-      0%, 3%, 5%, 42%, 44%, 100% {opacity: 1; -webkit-transform: scaleY(1); transform: scaleY(1);}
-      4.3% {opacity: 1; -webkit-transform: scaleY(1.7); transform: scaleY(1.7);}
-      43% {opacity: 1; -webkit-transform: scaleX(1.5); transform: scaleX(1.5);}
-    }
-
-    @keyframes noise {
-      0%, 3%, 5%, 42%, 44%, 100% {opacity: 1; -webkit-transform: scaleY(1); transform: scaleY(1);}
-      4.3% {opacity: 1; -webkit-transform: scaleY(1.7); transform: scaleY(1.7);}
-      43% {opacity: 1; -webkit-transform: scaleX(1.5); transform: scaleX(1.5);}
-    }
-
-    @-webkit-keyframes noise-3 {
-      0%,3%,5%,42%,44%,100% {opacity: 1; -webkit-transform: scaleY(1); transform: scaleY(1);}
-      4.3% {opacity: 1; -webkit-transform: scaleY(4); transform: scaleY(4);}
-      43% {opacity: 1; -webkit-transform: scaleX(10) rotate(60deg); transform: scaleX(10) rotate(60deg);}
-    }
-
-    @keyframes noise-3 {
-      0%,3%,5%,42%,44%,100% {opacity: 1; -webkit-transform: scaleY(1); transform: scaleY(1);}
-      4.3% {opacity: 1; -webkit-transform: scaleY(4); transform: scaleY(4);}
-      43% {opacity: 1; -webkit-transform: scaleX(10) rotate(60deg); transform: scaleX(10) rotate(60deg);}
-    }
-
-    .wrap {
+  .wrap {
       top: 30%;
       left: 25%;
 
@@ -239,15 +195,6 @@
 </head>
 <body>
 
-<video muted id="grunge" controls preload poster="black-square.jpg" autoplay loop>
-  <source src="http://s.okno.rs/video/grunge.mp4" type="video/mp4">
-  <p class="vjs-no-js svelte-1pgf6gw">To view this video please enable JavaScript, and consider upgrading to a
-  web browser that
-  <a href="https://videojs.com/html5-video-support/" target="_blank" class="svelte-1pgf6gw">supports HTML5 video</a>
-  </p>
-</video>
-
-
 <a href="https://okno.rs/" class="viewFull" target="_parent">View in full it looks way better :)</a>
 
 <div class="error">
@@ -281,16 +228,7 @@
       </code></pre>
   </div>
 </div>
-
-
 </span>
-
-
 </body>
 </html>
-
-
-
-
-
 {{end}}
