@@ -1,0 +1,67 @@
+{{define "title"}}{{.Coin.Name}} - Specifications - BlockChain Explorer - Faucet - Nodes - Source - News{{end}}
+{{define "bodyclass"}}{{.Coin.Slug}}{{end}}
+{{define "link"}}//{{.Coin.Slug}}.com-http.us/{{end}}
+{{define "cnm"}}<a href="{{template "link" .}}"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/32" alt="{{.Coin.Name}}"  width="32px" height="32px" layout="fixed"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/32" width="32" height="32" alt="{{.Coin.Name}}"></noscript></amp-img>{{.Coin.Name}}</a>{{end}}
+{{define "pagecss"}}{{template "coincss" .}}{{end}}
+
+{{define "plgs"}}
+{{template "amplist" .}}
+{{template "ampmustache" .}}
+{{template "ampform" .}}
+{{template "ampsidebar" .}}
+{{template "ampbind" .}}
+{{template "amplightbox" .}}
+{{template "ampselector" .}}
+{{template "ampfittext" .}}
+{{template "ampiframe" .}}
+{{template "ampaccordion" .}}
+{{end}}
+
+{{define "main"}}
+
+{{template "name" .}}
+{{template "basics" .}}
+{{template "desc" .}}
+{{template "links" .}}
+
+
+
+
+
+
+
+{{template "fbcom" .}}
+
+ <div class="pnl "><amp-timeago class="m1"  width="160"  height="20"  datetime="2017-03-14T00:37:33.809Z">Tuesday 14 March 2017 00.37</amp-timeago></div>
+
+ <div class="pnl ">
+    <amp-accordion expand-single-section animate>
+      <section>
+        <h4>Section 1</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+      <section>
+        <h4>Section 2</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+      <section>
+        <h4>Section 3</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+    </amp-accordion>
+</div>
+  
+{{template "news" .}}
+{{template "trends" .}}
+{{template "trans" .}}
+{{template "grfx" .}}
+
+
+
+{{end}}
+
+
+
+
+
+

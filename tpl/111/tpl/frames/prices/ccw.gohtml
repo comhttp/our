@@ -1,0 +1,139 @@
+{{define "ccw"}}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="https://l.com-http.us/css/ccw.css" />
+	<title>CryptoCompare Streamer API Example</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+						<h5 class="price-display">{{ .Coin.Symbol }} - BTC <span class="price" id="PRICE_{{ .Coin.Symbol }}"></span></h5>
+							<span>24h Change: <strong id="CHANGE24HOUR_{{ .Coin.Symbol }}"></span><span class="pct-change" id="CHANGE24HOURPCT_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Last Market: <span class="exchange" id="LASTMARKET_{{ .Coin.Symbol }}"></span> <br></span>
+							<span>Trade ID: <strong id="LASTTRADEID_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Open Hour: <strong id="OPENHOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>High Hour: <strong id="HIGHHOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Low Hour: <strong id="LOWHOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Open Day: <strong id="OPEN24HOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>High Day: <strong id="HIGH24HOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Low Day: <strong id="LOW24HOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Last Trade Volume: <strong id="LASTVOLUME_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Last Trade Volume To: <strong id="LASTVOLUMETO_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>24h Volume: <strong id="VOLUME24HOUR_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>24h VolumeTo: <strong id="VOLUME24HOURTO_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Total Volume ({{ .Coin.Symbol }}): <strong id="FULLVOLUMEFROM_{{ .Coin.Symbol }}"></strong><br></span>
+							<span>Total Volume (USD): <strong id="FULLVOLUMETO_{{ .Coin.Symbol }}"></strong><br></span>
+						</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+
+	<script src="https://l.com-http.us/js/streamer.js"></script>
+	<script>
+	$(document).ready(function() {
+
+	var currentPrice = {};
+	var socket = io.connect('https://streamer.cryptocompare.com/');
+	//Format: {SubscriptionId}~{ExchangeName}~{FromSymbol}~{ToSymbol}
+	//Use SubscriptionId 0 for TRADE, 2 for CURRENT, 5 for CURRENTAGG eg use key '5~CCCAGG~{{ .Coin.Symbol }}~USD' to get aggregated data from the CCCAGG exchange 
+	//Full Volume Format: 11~{FromSymbol} eg use '11~{{ .Coin.Symbol }}' to get the full volume of {{ .Coin.Symbol }} against all coin pairs
+	//For aggregate quote updates use CCCAGG ags market
+	var subscription = ['5~CCCAGG~{{ .Coin.Symbol }}~BTC'];
+	socket.emit('SubAdd', { subs: subscription });
+	socket.on("m", function(message) {
+		console.log(message);
+		var messageType = message.substring(0, message.indexOf("~"));
+		if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
+			dataUnpack(message);
+		}
+		else if (messageType == CCC.STATIC.TYPE.FULLVOLUME) {
+			decorateWithFullVolume(message);
+		}
+	});
+
+	var dataUnpack = function(message) {
+		var data = CCC.CURRENT.unpack(message);
+
+		var from = data['FROMSYMBOL'];
+		var to = data['TOSYMBOL'];
+		var fsym = CCC.STATIC.CURRENCY.getSymbol(from);
+		var tsym = CCC.STATIC.CURRENCY.getSymbol(to);
+		var pair = from + to;
+
+		if (!currentPrice.hasOwnProperty(pair)) {
+			currentPrice[pair] = {};
+		}
+
+		for (var key in data) {
+			currentPrice[pair][key] = data[key];
+		}
+
+		if (currentPrice[pair]['LASTTRADEID']) {
+			currentPrice[pair]['LASTTRADEID'] = parseInt(currentPrice[pair]['LASTTRADEID']).toFixed(0);
+		}
+		currentPrice[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(tsym, (currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']));
+		currentPrice[pair]['CHANGE24HOURPCT'] = ((currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']) / currentPrice[pair]['OPEN24HOUR'] * 100).toFixed(2) + "%";
+		displayData(currentPrice[pair], from, tsym, fsym);
+	};
+
+	var decorateWithFullVolume = function(message) {
+		var volData = CCC.FULLVOLUME.unpack(message);
+		var from = volData['SYMBOL'];
+		var to = '{{ .Coin.Symbol }}';
+		var fsym = CCC.STATIC.CURRENCY.getSymbol(from);
+		var tsym = CCC.STATIC.CURRENCY.getSymbol(to);
+		var pair = from + to;
+
+		if (!currentPrice.hasOwnProperty(pair)) {
+			currentPrice[pair] = {};
+		}
+
+		currentPrice[pair]['FULLVOLUMEFROM'] = parseFloat(volData['FULLVOLUME']);
+		currentPrice[pair]['FULLVOLUMETO'] = ((currentPrice[pair]['FULLVOLUMEFROM'] - currentPrice[pair]['VOLUME24HOUR']) * currentPrice[pair]['PRICE']) + currentPrice[pair]['VOLUME24HOURTO'];
+		displayData(currentPrice[pair], from, tsym, fsym);
+	};
+
+	var displayData = function(messageToDisplay, from, tsym, fsym) {
+		var priceDirection = messageToDisplay.FLAGS;
+		var fields = CCC.CURRENT.DISPLAY.FIELDS;
+
+		for (var key in fields) {
+			if (messageToDisplay[key]) {
+				if (fields[key].Show) {
+					switch (fields[key].Filter) {
+						case 'String':
+							$('#' + key + '_' + from).text(messageToDisplay[key]);
+							break;
+						case 'Number':
+							var symbol = fields[key].Symbol == 'TOSYMBOL' ? tsym : fsym;
+							$('#' + key + '_' + from).text(CCC.convertValueToDisplay(symbol, messageToDisplay[key]))
+							break;
+					}
+				}
+			}
+		}
+
+		$('#PRICE_' + from).removeClass();
+		if (priceDirection & 1) {
+			$('#PRICE_' + from).addClass("up");
+		}
+		else if (priceDirection & 2) {
+			$('#PRICE_' + from).addClass("down");
+		}
+
+		if (messageToDisplay['PRICE'] > messageToDisplay['OPEN24HOUR']) {
+			$('#CHANGE24HOURPCT_' + from).removeClass();
+			$('#CHANGE24HOURPCT_' + from).addClass("pct-up");
+		}
+		else if (messageToDisplay['PRICE'] < messageToDisplay['OPEN24HOUR']) {
+			$('#CHANGE24HOURPCT_' + from).removeClass();
+			$('#CHANGE24HOURPCT_' + from).addClass("pct-down");
+		}
+	};
+});
+	</script>
+</body>
+</html>
+{{end}}

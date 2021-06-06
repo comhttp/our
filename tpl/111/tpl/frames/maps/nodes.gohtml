@@ -1,0 +1,203 @@
+{{define "nodes"}}
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="nodesmap" style="height: 100%"></div>
+       <script type="text/javascript" src="https://l.com-http.us/js/echarts.min.js"></script>
+       <script type="text/javascript" src="https://l.com-http.us/js/world.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("nodesmap");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+
+
+  var nodes =  {{.Nodes}} ;
+
+
+  var toolTipData = []
+  for (var i = 0; i < nodes.length; i++) {
+
+      var name = nodes[i].ip;
+
+      toolTipData.push({
+          name: name,
+          value: [{
+                  name: "Country: ",
+                  value:  nodes[i].country_long,
+              },
+              {
+                  name: "Region: ",
+                  value:  nodes[i].region,
+              },
+              {
+                  name: "City: ",
+                  value:  nodes[i].city,
+              },
+              {
+                  name: "ZipCode: ",
+                  value:  nodes[i].zipcode,
+              },
+              {
+                name: "TimeZone: ",
+                  value:  nodes[i].timezone,
+              }
+          ]
+      })
+  }
+
+  function makeMapData(nodes) {
+      var mapData = [];
+      for (var i = 0; i < nodes.length; i++) {
+          var geoCoord = [ nodes[i].longitude , nodes[i].latitude ];
+            var name = nodes[i].ip;
+             console.log(nodes[i]);
+          if (geoCoord) {
+              mapData.push({
+                  name: name,
+                  value: geoCoord
+              });
+          }
+                   console.log(mapData);
+           
+      }
+      return mapData;
+  };
+option = {
+      backgroundColor: new echarts.graphic.RadialGradient(0.5, 0.5, 0.4, [{
+          offset: 0,
+          color: '#fcfcfc'
+      }, {
+          offset: 1,
+          color: '#fcfcfc'
+      }]),
+      tooltip: {
+          backgroundColor: '#3075cf',
+          trigger: 'item',
+          formatter: function(params) {
+              if (typeof(params.value)[2] == "undefined") {
+                  var toolTiphtml = ''
+                  for (var i = 0; i < toolTipData.length; i++) {
+                      if (params.name == toolTipData[i].name) {
+                          toolTiphtml += toolTipData[i].name + '<br>'
+                          for (var j = 0; j < toolTipData[i].value.length; j++) {
+                              toolTiphtml += toolTipData[i].value[j].name + ':' + toolTipData[i].value[j].value + "<br>"
+                          }
+                      }
+                  }
+                  //                                   console.log(toolTiphtml)
+                  // console.log(convertData(data))
+                  return toolTiphtml;
+              } else {
+                  var toolTiphtml = ''
+                  for (var i = 0; i < toolTipData.length; i++) {
+                      if (params.name == toolTipData[i].name) {
+                          toolTiphtml += toolTipData[i].name + ':<br>'
+                          for (var j = 0; j < toolTipData[i].value.length; j++) {
+                              toolTiphtml += toolTipData[i].value[j].name + ':' + toolTipData[i].value[j].value + "<br>"
+                          }
+                      }
+                  }
+                  //                                   console.log(toolTiphtml)
+                  // console.log(convertData(data))
+                  return toolTiphtml;
+              }
+          }
+      },
+      toolbox: {
+          show: true,
+          left: 'right',
+          iconStyle: {
+              normal: {
+                  borderColor: '#ff7500'
+              }
+          },
+          feature: {},
+          z: 200
+      },
+
+      geo: {
+          map: 'world',
+          backgroundColor: '#fcfcfc',
+          silent: true,
+          label: {
+              emphasis: {
+                  show: false,
+                  areaColor: '#303030'
+              }
+          },
+          itemStyle: {
+              normal: {
+                  borderWidth: 0,
+                  borderColor: '#cfcf30',
+                  areaColor: '#d8e4ec'
+              },
+              emphasis: {
+                  show: false,
+                  areaColor: '#303030',
+              }
+          },
+          left: '5%',
+          top: 60,
+          bottom: '5%',
+          right: '5%',
+          roam: true,
+
+          // <span style="color:#ff0000;">regions: coldata</span>  
+
+      },
+      /*    parallelAxis: makeParallelAxis(schema),
+       */
+      grid: [{
+          show: true,
+          left: 0,
+          right: 0,
+          top: '100%',
+          bottom: 0,
+          borderColor: 'transparent',
+          /* backgroundColor: '#FBF9F8',*/
+          backgroundColor: '#fcfcfc',
+          z: 99
+      }, {
+          show: false
+      }],
+
+      series: [{
+              name: '{{ .Coin.Name }}Nodes',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              //                    symbolSize: 8,
+              data: makeMapData(nodes),
+              activeOpacity: 1,
+              label: {
+                  normal: {
+                      formatter: '{b}',
+                      fontWeight: 'bold',
+                      color: "#303030",
+                      position: 'top',
+                      show: true
+                  }
+
+              },
+              symbolSize: 14,
+              zlevel: 6,
+              itemStyle: {
+                  normal: {
+                      color: '#808080',
+                  }
+              }
+          },
+
+      ]
+  };;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
+{{end}}

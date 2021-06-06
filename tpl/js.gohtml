@@ -9,8 +9,12 @@
             mounted() {
             },
             components: {
-                index: httpVueLoader('https://comhttp.okno.rs/js/vue/{{ .App }}/{{ .TLD }}.vue'),
+                index: httpVueLoader('https://comhttp.okno.rs/vue/{{ .App }}/{{ .TLD }}.vue'),
             },
         });
     </script>
+{{end}}
+
+{{define "ga"}}
+
 {{end}}

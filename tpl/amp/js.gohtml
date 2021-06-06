@@ -1,0 +1,34 @@
+{{define "js"}}
+    <script>
+        new Vue({
+            el: '#comhttp',
+            data() {
+                return {
+                }
+            },
+            mounted() {
+            },
+            components: {
+                index: httpVueLoader('https://comhttp.okno.rs/vue/{{ .App }}/{{ .TLD }}.vue'),
+            },
+        });
+    </script>
+{{end}}
+
+
+{{define "vue"}}
+    <amp-script layout="container" src="https://comhttp.okno.rs/vue/vue.js" sandbox="allow-forms"><div id="comhttp"></div></amp-script>
+{{end}}
+
+
+{{define "ga"}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK3P8ZB0B1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-GK3P8ZB0B1');
+    </script>
+{{end}}

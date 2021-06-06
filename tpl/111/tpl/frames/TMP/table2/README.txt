@@ -1,0 +1,3 @@
+A Pen created at CodePen.io. You can find this one at https://codepen.io/marcetin/pen/XZygGq.
+
+ Really Responsive Tables using CSS Flexbox - part 4. A complex example with lots of different kinds of fields, and a very custom wrapping logic. This is part of the [Really Responsive Tables pen collection](http://codepen.io/collection/DVvaPm/). See also [this post on hashnode](https://hashnode.com/post/really-responsive-tables-using-css3-flexbox-cijzbxd8n00pwvm53sl4l42cx)

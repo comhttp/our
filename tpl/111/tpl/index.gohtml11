@@ -1,0 +1,20 @@
+{{define "bodyclass"}} home{{end}}
+{{define "title"}}Specifications - BlockChain Explorer - Faucet - Nodes - Source - News{{end}}
+{{define "cnm"}}{{end}}
+{{define "link"}}//com-http.us/{{end}}
+{{define "pagecss"}}{{template "homecss" .}}{{end}}
+
+{{define "pbg"}}<amp-img src="//i.com-http.us/parallelcoin/128" alt="World of Coins"  width="128px" height="128px" layout="fixed"  class="pbg"><noscript><img src="//i.com-http.us/parallelcoin/128" width="128" height="128" alt="World of Coins"></noscript></amp-img>{{end}}
+
+{{define "plgs"}}
+{{template "ampsw" .}}
+{{end}}
+
+{{define "main"}}
+
+<amp-install-serviceworker
+      src="http://com-http.us/json/amp/sw.js"
+      data-iframe-src="http://c.com-http.us/madness"
+      layout="nodisplay">
+  </amp-install-serviceworker>
+ {{end}}

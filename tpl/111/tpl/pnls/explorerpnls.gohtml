@@ -1,0 +1,52 @@
+{{define "blocks"}}<article class="pnl big"><h3>Last {{.Coin.Name}} Blocks</h3>
+
+
+<ul class="blcks">
+<li>Height</li>
+<li class="hsh">Hash</li>
+<li>Difficulty</li>
+<li>Confirmations</li>
+<li class="txs">Transactions</li>
+<li >Time</li>
+</ul>
+
+<main class="lbl">
+<amp-list  layout="flex-item" src="//{{.Coin.Slug}}.com-http.us/a/last" items="d" class="cgl"><template type="amp-mustache">
+
+
+
+<ul class="blck">
+<li><button>{{.AMP.BlockHeight}}</button></li>
+<li class="hsh">{{.AMP.BlockHash}}</li>
+<li>{{`{{difficulty}}`}}</li>
+<li>{{`{{confirmations}}`}}</li>
+<li class="txs popover popover-left"><button>Txs</button><ul class="popover-container txc">{{`{{#tx}}`}}<li>{{.AMP.Tx}}</li>{{`{{/tx}}`}}</ul></li>
+<li>{{`{{time}}`}}</li>
+</ul>
+
+</template></amp-list>
+
+</main>
+
+<footer>
+pagination
+</footer>
+
+</article>{{end}}
+
+
+{{define "info"}}
+<div class="pnl sid">
+    <h3>Info</h3>
+<amp-list  height="300" layout="fixed-height" src="//{{.Coin.Slug}}.com-http.us/a/mining" items="d" single-item class="cgl">
+<template type="amp-mustache"><table><tbody>
+<tr><td>Blocks:</td><td>{{`{{blocks}}`}}</td></tr>
+<tr><td>Difficulty:</td><td>{{`{{difficulty}}`}}</td></tr>
+<tr><td>Current Block Size:</td><td>{{`{{currentblocksize}}`}}</td></tr>
+<tr><td>Current Block Tx:</td><td>{{`{{currentblocktx}}`}}</td></tr>
+<tr><td>Difficulty Scrypt:</td><td>{{`{{difficulty_scrypt}}`}}</td> </tr>
+<tr><td>Difficulty SHA256d:</td><td>{{`{{difficulty_sha256d}}`}}</td></tr>
+</tbody></table></template></amp-list>
+</div>
+{{end}}
+

@@ -1,0 +1,58 @@
+{{define "name"}}<div class="pnl pha chd"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/128" alt="{{.Coin.Name}}"  width="128px" height="128px" layout="fixed"  class="nic"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/128" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>
+<h1><amp-fit-text height="80" layout="fixed-height" min-font-size="68">{{.Coin.Name}}</amp-fit-text></h1></div>{{end}}
+
+{{define "basics"}}<div class="pnl "><h3>{{.Coin.Name}} Basics</h3><amp-list id="coin-spec" width="auto" height="220" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1"><template type="amp-mustache"  id="coin-spec"><table><tbody>
+    <tr><td>Name</td><td>{{`{{name}}`}}</td></tr>
+    <tr><td>Symbol</td><td>{{`{{symbol}}`}}</td></tr>
+    <tr><td>Start Date</td><td>{{`{{cdata.start}}`}}</td></tr>
+    <tr><td>Twitter</td><td>{{`{{cdata.tw}}`}}</td></tr>
+    <tr><td>Website Url</td><td>{{`{{cdata.web}}`}}</td></tr>
+</tbody></table></template></amp-list></div>{{end}}
+
+{{define "specs"}}<div class="pnl "><h3>{{.Coin.Name}} Specifications</h3><amp-list id="coin-spec" width="auto" height="128" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1"><template type="amp-mustache"  id="coin-spec"><table><tbody><tr><td><table><tbody>
+    <tr><td>Algorithm</td><td>{{`{{algo}}`}}</td></tr>
+    <tr><td>Total Coin Supply</td><td>{{`{{cdata.total}}`}}</td></tr>
+    <tr><td>Difficulty Adjustment</td><td>{{`{{cdata.diff}}`}}</td></tr>
+    <tr><td>Block Reward Reduction</td><td>{{`{{cdata.rew}}`}}</td></tr>
+    <tr><td>Proof Type</td><td>{{`{{cdata.proof}}`}}</td></tr>
+</tbody></table></template></amp-list></div>{{end}}
+
+{{define "desc"}}<div class="pnl "><h3>{{.Coin.Name}} Description</h3><amp-list id="coin-desc" width="auto" height="256" layout="flex-item" src="//com-http.us/json/coins/{{.Coin.Slug}}.json" items= "coin" single-item class="m1"><template type="amp-mustache"  id="coin-desc"> {{`{{{cdata.desc}}}`}}</template></amp-list></div>{{end}}
+
+
+{{define "news"}}<div class="pnl news"><h3>{{.Coin.Name}} News</h3><amp-list  id="coin-news"  width="auto"  height="542"  layout="flex-item"  src="//{{.Coin.Slug}}.com-http.us/a/news"  items= "news"  class="m1"><template type="amp-mustache"   id="coin-news"><div class="nws"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/16" alt="{{.Coin.Name}}"  width="16"  height="16"  layout="fixed"  class="nico"></amp-img>{{.AMP.News}}</div></template></amp-list></div>{{end}}
+
+
+
+{{define "trends"}}<div class="pnl nop nof"><amp-iframe title="{{.Coin.Slug}}Trends - Interest over time"  src="https://trends.google.com/trends/embed/explore/TIMESERIES?req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22{{.Coin.Slug}}%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%22today%2012-m%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=-120&eq=q%3D{{.Coin.Slug}}%26date%3Dtoday%2012-m"      height="360"    width="auto"  layout="flex-item"  frameborder="0"  sandbox="allow-scripts allow-same-origin"><amp-img src="//i.com-http.us/{{.Coin.Slug}}/256"  layout="flex-item"  placeholder></amp-img></amp-iframe></div>{{end}}
+
+
+
+
+
+
+
+
+{{define "grfx"}}
+<div class="pnl ">
+<h3>{{.Coin.Name}} Graphics</h3>
+<amp-img src="//i.com-http.us/{{.Coin.Slug}}/16" alt="{{.Coin.Name}}"  width="16"  height="16"  layout="fixed"  class="m1"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/16" width="16" height="16" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="//i.com-http.us/{{.Coin.Slug}}/32" alt="{{.Coin.Name}}"  width="32"  height="32"  layout="fixed"  class="m1"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/32" width="32" height="32" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="//i.com-http.us/{{.Coin.Slug}}/64" alt="{{.Coin.Name}}"  width="62"  height="64"  layout="fixed"  class="m1"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/64" width="64" height="64" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="//i.com-http.us/{{.Coin.Slug}}/128" alt="{{.Coin.Name}}"  width="128"  height="128"  layout="fixed"  class="m1"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/128" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>
+<amp-img src="//i.com-http.us/{{.Coin.Slug}}/256" alt="{{.Coin.Name}}"  width="256"  height="256"  layout="fixed"  class="m1"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/256" width="256" height="256" alt="{{.Coin.Name}}"></noscript></amp-img>
+</div>
+{{end}}
+
+
+
+
+{{define "cbg"}}<amp-img src="//i.com-http.us/{{.Coin.Slug}}/128" alt="{{.Coin.Name}}"  width="128px" height="128px" layout="fixed"  class="pbg"><noscript><img src="//i.com-http.us/{{.Coin.Slug}}/128" width="128" height="128" alt="{{.Coin.Name}}"></noscript></amp-img>{{end}}
+
+
+{{define "links"}}<div class="pnl "><h3>{{.Coin.Name}} Links</h3><form method="get" target="_blank" action="https://isthiscoinascam.com/check/{{.Coin.Slug}}"><button class="btn btn-primary btn-lg h3" type="submit" >Is {{.Coin.Name}} Scam?</button></form><a href="//{{.Coin.Slug}}.com-http.us/explorer"><button class="btn btn-primary btn-lg h3">{{.Coin.Name}} Blockchain Explorer</button></a></div>{{end}}
+
+{{define "trans"}}<div class="pnl "><h3>Last Transactions</h3><amp-list width="auto"  height="542"  layout="flex-item" src="//{{.Coin.Slug}}.com-http.us/a/rawpool" items="d" class="cgl"><template type="amp-mustache"><li class="menu-item">{{.AMP.Tx}}</li></template></amp-list></div>{{end}}
+
+{{define "explorers"}}
+{{end}}{{end}}{{end}}

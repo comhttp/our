@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Nexus</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <main id = 'main'>
+<label id="btn" for="control" class = 'fontawesome-info-sign'></label>
+<canvas  id="canv" ></canvas>
+</main>
+<input type="checkbox" id="control">
+<form id = 'data-set'>
+<label for="numnodes"># Nodes</label>
+<input type="number" step="1" min="1" max="300" value="60" id="numnodes" />
+<label for="addedge"># Edges</label>
+<input type="number" step="any" min="0" max="1000" value="5" id="addedge" />
+<label for="speed">Speed</label>
+<input type="number" step="any" min="0" max="100" value="3" id="speed"/>
+<label for="force">Force</label>
+<input type="number" step="any" min="0" max="100" value="4" id="force"/>
+<label for="type">Model</label>
+					<select id="type">
+						<option value="0.0" >Mesh</option>
+						<option value="0.5" selected="selected">Medley</option>
+						<option value="1.0">Hub && Spoke</option>
+					</select>
+</form>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

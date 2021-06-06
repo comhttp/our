@@ -1,0 +1,197 @@
+{{define "btn"}}
+.btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white);
+  border: .5vh solid var(--sec);
+  border-radius: .14vh;
+  color: var(--dark-gray);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.38vh;
+  line-height: 1;
+  outline: 0;
+  padding: .38vh;
+  text-align: center;
+  text-decoration: none;
+  transition: all .2s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.btn:focus {
+  box-shadow: 0 0 0 .14vh var(--dark);
+}
+.btn:focus,.btn:hover {
+  background:  var(--gray);
+  border-color: var(--dark-gray);
+  text-decoration: none;
+}
+.btn.active,.btn:active {
+  background:  var(--dark-gray);
+  border-color:  var(--gray);
+  color: #fff;
+  text-decoration: none;
+}
+.btn.active.loading::after,.btn:active.loading::after {
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+}
+.btn.disabled,.btn:disabled,.btn[disabled] {
+  cursor: default;
+  opacity: 1;
+  pointer-events: none;
+}
+.btn.btn-pri {
+  background: var(--dark-gray);
+  border-color: var(--white);
+  color: #fff}
+.btn.btn-pri:focus,.btn.btn-pri:hover {
+  background: var(--dark-gray);
+  border-color:var(--white);
+  color: var(--white);
+}
+.btn.btn-pri.active,.btn.btn-pri:active {
+  background: #3075CF;
+  border:1px solid var(--white);
+  color: #ff3;
+}
+.btn.btn-pri.loading::after {
+  border-bottom-color: #fff;
+  bor38vhlor: #fff;
+}
+.btn.btn-success {
+  background: #30D530;
+  border:1px solid #303030;
+  color: #fff;
+}
+.btn.btn-success:focus {
+  box-shadow: 0 0 0 .1rem rgba(50,182,67,.2);
+}
+.btn.btn-success:focus,.btn.btn-success:hover {
+  background: #4DF85F;
+  border-color: #1DC82F;
+  color: #fff;
+}
+.btn.btn-success.active,.btn.btn-success:active {
+  background: #1DC82F;
+  border-color: #4DF85F;
+  color: #fff;
+}
+.btn.btn-success.loading::after {
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+}
+.btn.btn-error {
+  background: #CF3030;
+  border-color: #d95000;
+  color: #fff;
+}
+.btn.btn-error:focus {
+  box-shadow: 0 0 0 .1rem rgba(232,86,0,.2);
+}
+.btn.btn-error:focus,.btn.btn-error:hover {
+  background: #de5200;
+  border-color: #cf4d00;
+  color: #fff;
+}
+.btn.btn-error.active,.btn.btn-error:active {
+  background: #c44900;
+  border-color: #b54300;
+  color: #fff;
+}
+.btn.btn-error.loading::after {
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+}
+.btn.btn-link {
+  background: 0 0;
+  border-color: transparent;
+  color: #3075cf;
+}
+.btn.btn-link.active,.btn.btn-link:active,.btn.btn-link:focus,.btn.btn-link:hover {
+  color: var(--gray);
+}
+.btn.btn-sm {
+  font-size: .7rem;
+  height: 1.4rem;
+  padding: .15rem .3rem;
+}
+.btn.btn-lg {
+  font-size: .9rem;
+  height: 2rem;
+  padding: .45rem .6rem;
+}
+.btn.btn-block {
+  display: block;
+  width: 100%;
+}
+.btn.btn-action {
+  padding-left: 0;
+  padding-right: 0;
+  width: 1.8rem;
+}
+.btn.btn-action.btn-sm {
+  width: 1.4rem;
+}
+.btn.btn-action.btn-lg {
+  width: 2rem;
+}
+.btn.btn-clear {
+  background: 0 0;
+  border: 0;
+  color: currentColor;
+  height: .8rem;
+  line-height: .8rem;
+  margin-left: .2rem;
+  margin-right: -2px;
+  opacity: 1;
+  padding: 0;
+  text-decoration: none;
+  width: .8rem;
+}
+.btn.btn-clear:hover {
+  opacity: .95;
+}
+.btn.btn-clear::before {
+  content: "\2715";
+}
+.btn-group {
+  display: inline-flex;
+  display: -ms-inline-flexbox;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.btn-group .btn {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.btn-group .btn:first-child:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn-group .btn:not(:first-child):not(:last-child) {
+  border-radius: 0;
+  margin-left: -.05rem;
+}
+.btn-group .btn:last-child:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin-left: -.05rem;
+}
+.btn-group .btn.active,.btn-group .btn:active,.btn-group .btn:focus,.btn-group .btn:hover {
+  z-index: 1;
+}
+.btn-group.btn-group-block {
+  display: flex;
+  display: -ms-flexbox;
+}
+.btn-group.btn-group-block .btn {
+  -ms-flex: 1 0 0;
+  flex: 1 0 0;
+}
+{{end}}

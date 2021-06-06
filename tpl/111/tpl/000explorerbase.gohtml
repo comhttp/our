@@ -1,0 +1,91 @@
+{{define "host"}}com-http.us{{end}}
+
+{{define "explorerbase"}}
+<!doctype html>
+<html ⚡>
+<head>
+ <meta charset="utf-8">
+<link rel="canonical" href="{{template "link" .}}">
+
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    {{template "head" .}}
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  
+
+<script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+<script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
+  <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+
+  <!--
+    The AMP boilerplate.
+  -->
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>   
+  
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+ 
+  <style amp-custom>
+       {{template "spectre.gohtml" .}}
+
+       {{template "style.gohtml" .}}
+
+    </style>
+</head>
+<body class="{{template "bodyclass" .}}">
+
+
+<div class="scs">
+<div class="scr hds">
+<header class="header container panel bg-gray pt-2 pb-2">
+  <div class="columns panel-body">
+  <div class="column col-5">
+<h1 class="h1"><a href="//com-http.us">The World of Crypto-Coins</a> {{template "cnm" .}}</h1>
+  </div>
+  <div class="column col-7">
+  <form method="GET"
+  class="p4"
+  action="/search"
+  target="_top">
+    <div class="form-group has-success columns">
+
+    <input type="text"
+    class="form-label column col-10" 
+      placeholder="Search..."
+      name="src">
+  <input type="submit"
+    value="Search"
+    class="btn btn-primary input-group-btn column col-2">
+  </div>
+  </form>
+</div>
+
+
+
+  </div>
+</div>
+</header>
+</div>
+<div class="scr mns">
+<main class="main container panel bg-dark">
+<div class="flst">
+    {{template "body" .}}
+    </div>
+</main>
+</div>
+<div class="scr fts">
+    <footer class="footer container panel bg-gray pt-2 pb-2">
+    FooTeR FooTeR FooTeR FooTeR FooTeR FooTeR 
+    </footer>
+    </div>
+ </div>
+</body>
+</html>
+{{end}}
+

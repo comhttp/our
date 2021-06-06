@@ -18,7 +18,7 @@ var (
 )
 
 func parseFiles(tpl string) (*template.Template, error) {
-	return template.ParseFiles(tpl, "tpl/head.gohtml", "tpl/js.gohtml", "tpl/style.gohtml", "tpl/error.gohtml", "tpl/footer.gohtml", "tpl/base.gohtml")
+	return template.ParseFiles(tpl, "tpl/amp/lib/boilerplate.gohtml", "tpl/amp/lib/css.gohtml", "tpl/amp/lib/font.gohtml", "tpl/amp/lib/colors.gohtml", "tpl/amp/base.gohtml", "tpl/amp/head.gohtml", "tpl/amp/main.gohtml", "tpl/amp/el/header.gohtml", "tpl/amp/el/footer.gohtml", "tpl/amp/el/nodecoins.gohtml", "tpl/amp/el/algocoins.gohtml", "tpl/amp/el/restcoins.gohtml", "tpl/amp/js.gohtml", "tpl/amp/style.gohtml", "tpl/el/loader.gohtml")
 }
 
 func Handlers() http.Handler {
@@ -33,6 +33,7 @@ func Handlers() http.Handler {
 	sub.HandleFunc("/{app}/{section}", sectionHandler())
 	sub.HandleFunc("/{app}/{section}/{item}", itemHandler())
 	sub.Headers("Access-Control-Allow-Origin", "*")
+	sub.Headers("Content-Type", "application/json")
 
 	return handlers.CORS()(handlers.CompressHandler(utl.InterceptHandler(r, utl.DefaultErrorHandler)))
 
@@ -57,7 +58,7 @@ func indexHandler() func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Top level domain keyword 1:  ", tld)
 		fmt.Println("App 1: ", app)
 		fmt.Println("Slug 1: ", slug)
-		template.Must(parseFiles("tpl/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+		template.Must(parseFiles("tpl/amp/rts/"+tld+"/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
 	}
 }
 
@@ -77,7 +78,7 @@ func indexHandler() func(w http.ResponseWriter, r *http.Request) {
 //		funcMap := template.FuncMap{
 //			"truncate": utl.Truncate,
 //		}
-//		template.Must(parseFiles("tpl/sub.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+//		template.Must(parseFiles("tpl/amp/sub.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
 //	}
 //}
 func appHandler() func(w http.ResponseWriter, r *http.Request) {
@@ -107,7 +108,7 @@ func appHandler() func(w http.ResponseWriter, r *http.Request) {
 		//if tld == "us" {
 		//	landing = "coin"
 		//}
-		template.Must(parseFiles("tpl/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+		template.Must(parseFiles("tpl/amp/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
 	}
 }
 func sectionHandler() func(w http.ResponseWriter, r *http.Request) {
@@ -130,8 +131,8 @@ func sectionHandler() func(w http.ResponseWriter, r *http.Request) {
 		//if tld == "us" {
 		//	landing = "coin"
 		//}
-		//template.Must(parseFiles("tpl/" + section+"/index")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
-		template.Must(parseFiles("tpl/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+		//template.Must(parseFiles("tpl/amp/" + section+"/index")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+		template.Must(parseFiles("tpl/amp/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
 	}
 }
 
@@ -156,8 +157,8 @@ func itemHandler() func(w http.ResponseWriter, r *http.Request) {
 		//if tld == "us" {
 		//	landing = "coin"
 		//}
-		//template.Must(parseFiles("tpl/"+app+"/"+section+"/"+item)).Funcs(funcMap).ExecuteTemplate(w, "base", data)
-		template.Must(parseFiles("tpl/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+		//template.Must(parseFiles("tpl/amp/"+app+"/"+section+"/"+item)).Funcs(funcMap).ExecuteTemplate(w, "base", data)
+		template.Must(parseFiles("tpl/amp/index.gohtml")).Funcs(funcMap).ExecuteTemplate(w, "base", data)
 
 	}
 }

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  
+  
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      /* button variables */
+html {
+  height: 100%;
+  overflow: hidden;
+  background: #777;
+}
+
+/* the perspective set here is the most important declaration for the 3d look of the buttons (values over 1000px make the buttons look almost flat) */
+body {
+  margin: 0;
+  height: 100%;
+  overflow-y: scroll;
+  font-family: sans-serif;
+  font-size: 16px;
+  perspective: 350px;
+}
+
+div {
+  width: 96%;
+  margin: 50px;
+  padding: 0;
+  background: #fff;
+  transform-style: preserve-3d;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h1, h2, hr {
+  position: relative;
+  background: #444;
+  color: #fff;
+  line-height: 2em;
+  margin-left: -50px;
+  margin-right: -50px;
+  transform-style: preserve-3d;
+  transform: translateZ(1px);
+}
+h1::before, h1::after, h2::before, h2::after, hr::before, hr::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  background: #2b2b2b;
+}
+h1::before, h2::before, hr::before {
+  left: -50px;
+  transform-origin: 100% 0%;
+  transform: rotateY(-130deg);
+}
+h1::after, h2::after, hr::after {
+  right: -50px;
+  transform-origin: 0% 0%;
+  transform: rotateY(130deg);
+}
+
+hr {
+  border: 0;
+  height: 10px;
+  background: #444;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  padding: 4px 16px;
+  border: 0;
+  min-width: 48px;
+  margin: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #aad1ee;
+  background-image: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.15) 50%, rgba(0, 0, 0, 0));
+  color: #222;
+  transform-style: preserve-3d;
+  transform: translateZ(18px);
+  cursor: pointer;
+  user-select: none;
+  /* double colon syntax for pseudo elements because IE8 doesn't need to see them (no transforms) */
+  /* pushing the button down; done with animations with steps because transitions are too buggy and jumpy */
+}
+button:focus {
+  outline: none;
+}
+button::before, button::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #4098d9;
+  transform-origin: 0% 0%;
+}
+button::before {
+  content: "";
+  height: 18px;
+  background: #6aafe1;
+  transform: rotateX(-90deg);
+}
+button::after {
+  content: "";
+  width: 18px;
+  transform: rotateY(90deg);
+}
+button.top-half::before {
+  top: auto;
+  bottom: 0;
+  background: #267ebf;
+  transform-origin: 100% 100%;
+  transform: rotateX(90deg);
+}
+button.left-half::after {
+  left: auto;
+  right: 0;
+  transform-origin: 100% 100%;
+  transform: rotateY(-90deg);
+}
+button:active {
+  animation: button 80ms steps(20) both;
+}
+button:active::before {
+  animation: buttonbefore 80ms steps(20) both;
+}
+button:active::after {
+  animation: buttonafter 80ms steps(20) both;
+}
+
+@keyframes button {
+  to {
+    transform: translateZ(9px);
+  }
+}
+@keyframes buttonbefore {
+  to {
+    height: 9px;
+  }
+}
+@keyframes buttonafter {
+  to {
+    width: 9px;
+  }
+}
+/* hide pseudo elements in IE9 and IE10 (no 3D transforms) */
+@media screen and (min-width: 0\0) {
+  button::before, button::after {
+    display: none;
+  }
+}
+/* hide pseudo elements in non-webkit Opera) */
+x:-o-prefocus, button::before, button::after {
+  display: none;
+}
+
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<div>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button><button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>!</button>
+<button>Fancy Button!</button>
+<button class="social">
+<svg width="17" height="15" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <g id="g2989" transform="matrix(0.0124718 0 0 -0.0124718 27.9323 53.5044)" fill="#00aced">
+   <path id="path2991" d="m-1372.63623,4272.02979c-125,-45 -204,-160.99951 -195,-287.99951l3,-49l-50,6c-182,23 -341,101 -476.00024,231.99951l-66,65l-17,-48c-36,-106.99951 -13,-219.99951 62,-295.99951c40,-42 31,-48 -38,-23c-24,8 -45,14 -47,11c-7,-7 17,-98 36,-134c26,-50 79,-99 137.00024,-128l49,-23l-58,-1c-56.00024,0 -58.00024,-1 -52.00024,-22c20,-65 99.00024,-134 187.00024,-164l62,-21l-54,-32c-80,-46 -174.00024,-72 -268.00024,-74c-45,-1 -82,-5 -82,-8c0,-10 122,-66 193.00012,-88c213.00012,-65 466.00012,-37 656.00012,74c135,79 270,236 333,388c34,81 67.99994,229 67.99994,300c0,46 3,52 59,107c33,32 64,66.99951 70,76.99951c10,19 9,19 -42,2c-85,-29.99951 -97,-25.99951 -55,19c31,32 68,90 68,107c0,3 -15,-2 -32,-11c-18,-10 -58,-25 -88,-34l-53.99994,-17l-49,33c-27,18 -65,38 -85,44c-51,14 -129,12 -175,-4z" fill="#000000"/>
+  </g>
+ </g>
+</svg>
+</button>
+<button class="social">
+<svg width="7" height="15" xmlns="http://www.w3.org/2000/svg">
+ <title>Facebook Home</title>
+ <g>
+  <title>Layer 1</title>
+  <path id="path3857-4" d="m4.92885,0c-2.49491,0 -3.37211,1.26051 -3.37211,3.37858l0,1.55835l-1.55673,0l0,2.59617l1.55673,0l0,7.5331l3.11185,0l0,-7.5331l2.07726,0l0.27481,-2.59617l-2.35207,0l0.00323,-1.2997c0,-0.67724 0.06482,-1.03944 1.0362,-1.03944l1.29809,0l0,-2.59779l-2.07726,0z" mask="none" fill="#000000"/>
+ </g>
+</svg>
+</button>
+<button class="social">
+<svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+   <circle id="svg_4" fill="#000" r="2.05961" cy="12.95838" cx="2.05961"/>
+   <path id="svg_5" fill="#000" d="m9.95478,15.01799l-2.91778,0a7.037,7.037 0 0 0 -7.037,-7.037l0,-2.91778a9.95478,9.95478 0 0 1 9.95478,9.95478z"/>
+   <path id="svg_6" fill="#000" d="m12.01439,15.01799a12.01439,12.01439 0 0 0 -12.01439,-12.01439l0,-3.0036a15.01799,15.01799 0 0 1 15.01799,15.01799l-3.0036,0z"/>
+</svg>
+</button>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

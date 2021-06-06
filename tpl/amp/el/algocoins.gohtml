@@ -1,0 +1,25 @@
+{{define "algocoins"}}
+        <h2>Algo</h2>
+    <amp-state id="allAlgoCoins" src="https://jorm.okno.rs/j/info/algos"></amp-state>
+    <select on="change:AMP.setState({
+        filteredAlgoCoins: allAlgoCoins.c.filter(a => event.value == 'all' ? true : a.a == event.value)
+      })">
+        <option value="all" selected>All</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="orange">orange</option>
+    </select>
+
+        <amp-list  height="282" [height]="(40 + 24) * filteredAlgoCoins.length" layout="responsive" items="c" src="https://jorm.okno.rs/j/info/algos" [src]="filteredAlgoCoins" binding="no">
+            <template type="amp-mustache">
+                <h2>{{`{{n}}`}} Coins</h2>
+                <div class="coins algocoins">{{`{{#c}}`}}
+                <a class="coin algocoin" ref="coin" href="https://{{`{{s}}`}}.com-http.us/">
+                <div class="reflection" ref="refl"></div>
+                <amp-img width="64" height="64" alt="{{`{{n}}`}} - {{`{{a}}`}}" src="https://img.okno.rs/coins/64/{{`{{s}}`}}64.png"></amp-img>
+                </a>
+                {{`{{/c}}`}}</div>
+            </template>
+        </amp-list>
+{{end}}

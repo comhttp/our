@@ -1,0 +1,15 @@
+{{define "nodecoins"}}
+<amp-layout layout="responsive" width="1" height="1" >
+    <amp-list layout="fill" src="https://jorm.okno.rs/j/info/nodecoins" [src]="emptyListSampleSrc || 'https://jorm.okno.rs/j/info/nodecoins'" single-item items="." reset-on-refresh binding="no">
+            <template type="amp-mustache">
+                <h2>{{`{{n}}`}} BitNodes</h2>
+                <div class="coins nodecoins">{{`{{#c}}`}}
+                        <a class="coin" ref="coin" href="https://{{`{{s}}`}}.com-http.us/">
+                            <div class="reflection" ref="refl"></div>
+                <amp-img layout="fixed"  width="128" height="128" alt="{{`{{n}}`}}" src="https://img.okno.rs/coins/128/{{`{{s}}`}}128.png"></amp-img>
+                </a>
+                {{`{{/c}}`}}</div>
+            </template>
+        </amp-list>
+</amp-layout>
+{{end}}

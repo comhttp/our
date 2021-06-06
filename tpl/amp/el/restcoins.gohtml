@@ -1,0 +1,11 @@
+{{define "restcoins"}}
+    <amp-layout layout="responsive" width="1" height="1" >
+        <amp-list layout="fill" src="https://jorm.okno.rs/j/info/restcoins" [src]="emptyListSampleSrc || 'https://jorm.okno.rs/j/info/restcoins'" single-item items="." reset-on-refresh binding="no">
+        <template type="amp-mustache">
+    {{template "loader ."}}
+                <h2>{{`{{n}}`}} Rest coins</h2>
+                <div class="restcoins">{{`{{#c}}`}}<a class="restcoin" href="https://{{`{{.}}`}}.com-http.us/">{{`{{.}}`}}</a>{{`{{/c}}`}}</div>
+            </template>
+        </amp-list>
+    </amp-layout>
+{{end}}

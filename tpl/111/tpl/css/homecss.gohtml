@@ -1,0 +1,75 @@
+{{define "homecss"}}
+
+.home .cta{
+  position:fixed;
+  display:flex;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  width:100%;
+  height:100%;
+    z-index: 1111;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.dbt{
+  font-size:14vh;
+  width:62%;
+  height:24vh;
+}
+
+.home .lyt{
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+.pnl header{
+  display:flex;
+  flex-direction:row;
+
+
+
+margin-bottom:1vh;
+padding-bottom:1vh;
+
+  border-bottom: 1px solid var(--border-dark);
+
+  }
+
+.pnl header figure{
+  width:64px;
+  height:64px;
+  margin:0;
+  padding:0;
+  }
+.pnl header h2{
+  flex:1;
+}
+.pnl header a{
+  height: 64px;
+  padding-left:1vh;
+    display: flex;
+    flex: 1 0 auto;
+
+    color:var(--dark-gray);
+    text-tranform:none;
+  }
+
+
+.pnl footer a, .pnl footer .btn{
+      display: flex;
+    flex: 1 0 auto;
+  }
+
+ .pnl footer .btn{
+padding:1vh;
+text-align:center;
+justify-content:center;
+  }
+
+
+
+
+{{end}}

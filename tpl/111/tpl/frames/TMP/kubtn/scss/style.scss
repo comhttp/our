@@ -1,0 +1,165 @@
+@import "compass/css3";
+
+/* button variables */
+$bsize: 18px;
+$blue: #aad1ee;
+$titlefoldsize: 50px;
+$animtiming: 80ms steps(20) both;
+
+html {
+  height: 100%;
+  overflow: hidden;
+  background: #777;
+}
+
+
+/* the perspective set here is the most important declaration for the 3d look of the buttons (values over 1000px make the buttons look almost flat) */
+body {
+  margin: 0;
+  height: 100%;
+  overflow-y: scroll;
+  font-family: sans-serif;
+  font-size: 16px;
+  perspective: 350px;
+}
+
+div {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px 20px 600px;
+  background: #fff;
+  transform-style: preserve-3d;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h1, h2, hr {
+  position: relative;
+  background: #444;
+  color: #fff;
+  line-height: 2em;
+  margin-left: -$titlefoldsize;
+  margin-right: -$titlefoldsize;
+  transform-style: preserve-3d;
+  transform: translateZ(1px);
+  
+  &::before, &::after {
+    content:"";
+    position: absolute;
+    top: 0;
+    width: $titlefoldsize;
+    height: 100%;
+    background: darken(#444, 10%);
+  }
+    
+  &::before {
+    left: -$titlefoldsize;
+    transform-origin: 100% 0%;
+    transform: rotateY(-130deg);
+  }
+  &::after {
+    right: -$titlefoldsize;
+    transform-origin: 0% 0%;
+    transform: rotateY(130deg);
+  }
+}
+
+hr {
+  border: 0;
+  height: 10px;
+  background: #444;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  padding: 4px 16px;
+  border: 0;
+  min-width: 48px;
+  margin: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: $blue;
+
+  background-image: radial-gradient(ellipse at top, rgba(255,255,255,0.15) 50%, transparent);
+  color: #222;
+  transform-style: preserve-3d;
+  transform: translateZ( $bsize );
+  cursor: pointer;
+  user-select: none;
+
+  &:focus {outline: none;}
+  /* double colon syntax for pseudo elements because IE8 doesn't need to see them (no transforms) */
+  &::before, &::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: darken($blue, 25%);
+    transform-origin: 0% 0%;
+  }
+  &::before {
+    content:"";
+    height: $bsize;
+    background: darken($blue, 15%);
+    transform: rotateX(-90deg);
+  }
+  &::after {
+    content:"";
+    width: $bsize;
+    transform: rotateY(90deg);
+  }
+
+  &.top-half::before {
+    top: auto;
+    bottom: 0;
+    background: darken($blue, 35%);
+    transform-origin: 100% 100%;
+    transform: rotateX(90deg);
+  }
+
+  &.left-half::after {
+    left: auto;
+    right: 0;
+    transform-origin: 100% 100%;
+    transform: rotateY(-90deg);
+  }
+
+
+/* pushing the button down; done with animations with steps because transitions are too buggy and jumpy */
+  &:active {  
+    animation: button $animtiming;
+    &::before {
+      animation: buttonbefore $animtiming;
+    }
+    &::after {
+      animation: buttonafter $animtiming;
+    }
+  }
+}
+
+@keyframes button {
+    to { transform: translateZ( $bsize/2 ) }
+}
+@keyframes buttonbefore {
+    to { height: $bsize/2; }
+}
+@keyframes buttonafter {
+    to { width: $bsize/2; }
+}
+
+
+/* hide pseudo elements in IE9 and IE10 (no 3D transforms) */
+@media screen and (min-width:0\0) {  
+  button::before, button::after {
+    display: none;
+  }
+}
+
+/* hide pseudo elements in non-webkit Opera) */
+x:-o-prefocus, button::before, button::after {
+  display: none;
+}

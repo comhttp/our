@@ -1,0 +1,85 @@
+{{define "explorercss"}}
+.lyt{
+    flex-direction:row;
+    flex:1 0 auto;
+}
+
+.lbl{
+    display:flex;
+    flex:1 0 auto;
+    height:74vh;
+}
+.lyt .pnl.big{
+    flex:1 0 auto;
+}
+
+
+
+
+
+ul.blcks, ul.blck, ul.tx {
+  position:relative;
+  display:flex;
+  flex-direction:row;
+  flex:0 0 auto;
+  margin:0;
+  padding:0;
+  list-style:none;
+  justify-content:space-between;
+}
+ul.blcks li,ul.blck li,ul.tx li{
+position:relative;
+display:flex;
+flex:0 0 auto;
+margin:.5vh 0;
+}
+ul.blcks{
+font-weight:bold;
+}
+ul.blck{
+font-weight:200;
+border-top: 1px solid var(--border-dark);
+
+transition: all .14s ease;
+}
+
+
+
+ul.tx{
+flex-direction:column;
+font-size:1vh;
+}
+ul.tx li{
+ margin:0;
+}
+ul.blcks li.hsh,ul.blck li.hsh{
+flex:0 0 38%;
+}
+ul.blcks li.txs{
+
+}
+.cgl div[role="list"]{
+display:flex;
+flex-direction:column;
+}
+
+ul.blck:hover{
+    background:var(--trans-dark);
+
+      transition: all .24s ease;
+
+}
+
+
+
+.txc{
+    padding:1vh;
+    background:var(--gray);
+}
+.txc a{
+    color:var(--white);
+}
+.txc a:hover{
+    color:var(--orange);
+}
+{{end}}

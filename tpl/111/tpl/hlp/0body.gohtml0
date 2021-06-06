@@ -1,0 +1,13 @@
+{{define "body"}}<body class="{{template "bodyclass" .}}">
+<div class="scs">
+<header id="header"  class="scr hds header hdh">
+{{template "pbg" .}}
+
+<h1><amp-fit-text height="68"  layout="flex-item"><a href="//com-http.us">Beyond BlockChain</a>  {{template "cnm" .}}</amp-fit-text></h1>
+</header>
+<main id="main" role="main" class="scr main"><section class="lyt">{{template "main" .}}</section></main>
+<footer id="footer" class="scr fts footer">{{template "pbg" .}}FooTeR FooTeR FooTeR FooTeR FooTeR FooTeR </footer>
+ </div>
+</body>{{end}}
+
+{{define "pbg"}}{{template "cbg" .}}{{end}}
