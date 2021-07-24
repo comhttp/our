@@ -2,6 +2,7 @@ package utl
 
 import (
 	"fmt"
+	"github.com/comhttp/our/cfg"
 	"net/http"
 	"text/template"
 )
@@ -31,7 +32,7 @@ func (w *interceptResponseWriter) Write(p []byte) (n int, err error) {
 
 func DefaultErrorHandler(w http.ResponseWriter, status int) {
 	w.Header().Set("Content-Type", "text/html")
-	template.Must(template.ParseFiles("tpl/error.gohtml")).ExecuteTemplate(w, "error", map[string]interface{}{"status": status})
+	template.Must(template.ParseFiles(cfg.Path+"tpl/error.gohtml")).ExecuteTemplate(w, "error", map[string]interface{}{"status": status})
 }
 
 func InterceptHandler(next http.Handler, errH ErrorHandler) http.Handler {

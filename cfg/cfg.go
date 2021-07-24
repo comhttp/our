@@ -17,6 +17,6 @@ type CloudFlare struct {
 
 // configurations for jorm
 var (
-	Path   = ""
+	Path   = "/our/"
 	CONFIG *config
 )

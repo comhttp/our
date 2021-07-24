@@ -1,6 +1,6 @@
 {
 	"Port": "4488",
-	"Path": "",
+	"Path": "/our/",
 	"RPC": {
 		"Username": "parallelcoinrpc",
 		"Password": "GKzRg6irzu9AYqucHpsSUn942JGqQccu2nkbdReaV7Fu"
