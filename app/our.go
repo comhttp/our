@@ -10,7 +10,6 @@ import (
 	"github.com/rs/zerolog/log"
 
 	"github.com/comhttp/jorm/mod/coin"
-	"github.com/comhttp/jorm/mod/exchange"
 	"github.com/comhttp/jorm/mod/explorer"
 	"github.com/comhttp/jorm/pkg/cfg"
 	"github.com/comhttp/jorm/pkg/jdb"
@@ -42,42 +41,6 @@ type (
 
 func (o *OUR) JDBclient(jdbId string) (*jdb.JDB, error) {
 	return jdb.NewJDB(o.jdbServers[jdbId])
-}
-
-func (o *OUR) ENSOhandlers() http.Handler {
-	//coinsCollection := Queries(j.B["coins"],"coin")
-	c, err := o.JDBclient("coins")
-	utl.ErrorLog(err)
-	cq := coin.Queries(c, "coin")
-
-	e, err := o.JDBclient("exchanges")
-	utl.ErrorLog(err)
-	eq := exchange.Queries(e, "exchange")
-
-	explorerJDBS := make(map[string]*jdb.JDB)
-
-	for _, coin := range o.Explorers {
-		jdbCl, err := o.JDBclient(coin.Coin)
-		if err != nil {
-			utl.ErrorLog(err)
-		} else {
-			explorerJDBS[coin.Coin] = jdbCl
-		}
-
-	}
-
-	exq := explorer.Queries(explorerJDBS, "info")
-
-	//exq := exchange.Queries(j.JDBclient("exchanges"), "exchange")
-	//exq := exchange.Queries(j.JDBclient("explorers"),"explorer")
-	r := mux.NewRouter()
-	//s := r.Host("enso.okno.rs").Subrouter()
-	r.StrictSlash(true)
-	//n := r.PathPrefix("/n").Subrouter()
-	coin.ENSOroutes(cq, r)
-	exchange.ENSOroutes(eq, r)
-	explorer.ENSOroutes(exq, r)
-	return handlers.CORS()(handlers.CompressHandler(utl.InterceptHandler(r, utl.DefaultErrorHandler)))
 }
 
 func NewOUR(path string) (o *OUR) {
